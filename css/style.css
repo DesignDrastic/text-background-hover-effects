@@ -1,0 +1,173 @@
+body {
+  background: #201e1e;
+}
+.content {
+  text-align: center;
+}
+.box {
+  border-bottom: 1px solid aqua;
+}
+/* Design title */
+.title {
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: 6rem;
+  text-align: center;
+  margin: 15px;
+  display: inline-flex;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #ddbdff;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+/* Effect 1: */
+.title.e1 {
+  transition: all .5s linear;
+  background-image: linear-gradient(#ddbdff, #ddbdff);
+  background-size: 0%;
+}
+/* From left */
+.title.e1.left {
+  background-position: left;
+}
+/* From right */
+.title.e1.right {
+  background-position: right;
+}
+.title.e1:hover {
+  background-size: 100%;
+}
+/* Angle */
+.title.e1.angle {
+  transition: all .75s;
+  background-image: linear-gradient(125deg, #ddbdff, #ddbdff 50%, transparent 50%);
+  background-size: 0% 100%;
+}
+.title.e1.angle:hover {
+  background-size: 215% 100%;
+}
+/* Effect 2 */
+.title.e2 {
+  transition: all .5s linear;
+  background-image: linear-gradient(#ddbdff, #ddbdff);
+  background-size: 100% 0%;
+}
+/* From top */
+.title.e2.top {
+  background-position: top;
+}
+/* From bottom */
+.title.e2.bottom {
+  background-position: bottom;
+}
+.title.e2:hover {
+  background-size: 100% 100%;
+}
+/* Effect 3: From center */
+.title.e3 {
+  transition: all .5s linear;
+  background-image: linear-gradient(#ddbdff, #ddbdff);
+  background-size: 0%;
+  background-position: center;
+}
+.title.e3:hover {
+  background-size: 100%;
+}
+/* Effect 4: Gradient */
+.title.e4 {
+  transition: all .75s linear;
+  background-image: linear-gradient(90deg,#ddbdff 75%, transparent);
+  background-size: 150% 100%;
+  background-position-x: 300%;
+}
+.title.e4:hover {
+  background-position-x: 0%;
+}
+/* Effect 5 & 6 */
+/* 5: mutlicolor 6: bacgkround image */
+.title.e5, .title.e6 {
+  transition: all .75s linear;
+  background-position: left;
+  background-size: 0% 100%;
+}
+.title.e5 {
+  background-image: linear-gradient(90deg, #F77692 0%, #F77692 25%, PaleGreen 25%, PaleGreen 50%, #6a5acd 50%, #6a5acd 75%, #008b8b 75%, #008b8b 100%);
+}
+.title.e6 {
+  background-image: url("../images/gradient.jpg");
+}
+.title.e5:hover, .title.e6:hover {
+  background-size: 100% 100%;
+}
+/* Direction aware hover */
+.title.dir {
+  background-image: linear-gradient(#ddbdff, #ddbdff);
+  background-size: 0 0;
+}
+.title.dir[dd-dir="in-top"], .title.dir[dd-dir="in-bottom"]  {
+  animation: in-top-bottom .75s;
+  animation-fill-mode: forwards;
+}
+.title.dir[dd-dir="in-top"] {
+  background-position: top;
+}
+.title.dir[dd-dir="in-bottom"] {
+  background-position: bottom;
+}
+@keyframes in-top-bottom {
+  0% { background-size: 100% 0%; }
+  100% { background-size: 100% 100%; }
+}
+.title.dir[dd-dir="in-left"], .title.dir[dd-dir="in-right"]  {
+  animation: in-left-right .75s;
+  animation-fill-mode: forwards;
+}
+.title.dir[dd-dir="in-left"] {
+  background-position: left;
+}
+.title.dir[dd-dir="in-right"] {
+  background-position: right;
+}
+@keyframes in-left-right {
+  0% { background-size: 0% 100%; }
+  100% { background-size: 100% 100%; }
+}
+.title.dir[dd-dir="out-top"], .title.dir[dd-dir="out-bottom"] {
+  animation: out-top-bottom 1s;
+  animation-fill-mode: forwards;
+}
+.title.dir[dd-dir="out-top"] {
+  background-position: top;
+}
+.title.dir[dd-dir="out-bottom"] {
+  background-position: bottom;
+}
+@keyframes out-top-bottom {
+  0% {
+    background-size: 100% 100%;
+  }
+  100% {
+    background-size: 100% 0%;
+  }
+}
+.title.dir[dd-dir="out-left"], .title.dir[dd-dir="out-right"] {
+  animation: out-left-right 1s;
+  animation-fill-mode: forwards;
+}
+.title.dir[dd-dir="out-left"] {
+  background-position: left;
+}
+.title.dir[dd-dir="out-right"] {
+  background-position: right;
+}
+@keyframes out-left-right {
+  0% {
+    background-size: 100% 100%;
+  }
+  100% {
+    background-size: 0% 100%;
+  }
+}

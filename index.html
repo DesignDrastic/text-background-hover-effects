@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Drastic</title>
+  <link rel="stylesheet" href="css/default.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Work+Sans:wght@900&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="body">
+  <div class="content">
+    <div class="box">
+      <h2 class="title e1 left">Design Drastic</h2>
+    </div>
+    <div class="box">
+      <h2 class="title e1 left angle">Angle</h2>
+    </div>
+    <div class="box">
+      <h2 class="title e1 right">From Right</h2>
+    </div>
+    <div class="box">
+      <h2 class="title e2 top">From Top</h2>
+    </div>
+    <div class="box">
+      <h2 class="title e2 bottom">From Bottom</h2>
+    </div>
+    <div class="box">
+      <h2 class="title e3">From Center</h2>
+    </div>
+    <div class="box">
+      <h2 class="title e4">Design Drastic</h2>
+    </div>
+    <!-- Direction aware hover effect -->
+    <div class="box">
+      <div style="display: inline-block;">
+        <h2 class="title dir" dd-dir>Directional</h2>
+      </div>
+      <br />
+      <div style="display: inline-block;">
+        <h2 class="title dir" dd-dir>Design</h2>
+        <h2 class="title dir" dd-dir>Drastic</h2>
+      </div>
+    </div>
+    <div class="box">
+      <h2 class="title e5">Multicolor</h2>
+    </div>
+    <div class="box">
+      <h2 class="title e6">Background Image</h2>
+    </div>
+  </div>
+  <script>
+  // Direction aware hover effect
+  var dir_elems = document.querySelectorAll('[dd-dir]');
+  dir_elems.forEach(d => {
+    // Handle mouse enter event
+    d.addEventListener("mouseenter", mouseEnter);
+    // Handle mouse leave event
+    d.addEventListener("mouseleave", mouseLeave);
+  });
+  // Handle mouse(enter/leave) events
+  function mouseEvent(e, dir) {
+    var el = e.target;
+    var w = e.target.clientWidth;
+    var h = e.target.clientHeight;
+    var x = ( e.pageX - el.offsetLeft - ( w/2 )) * ( w > h ? ( h/w ) : 1 );
+    var y = ( e.pageY - el.offsetTop - ( h/2 )) * ( h > w ? ( w/h ) : 1 );
+    const d = { 0: 'top', 1: 'right', 2: 'bottom', 3: 'left' };
+    var direction = Math.round( ( ( ( Math.atan2(y, x) * (180 / Math.PI) ) + 180 ) / 90 ) + 3 ) % 4;
+    el.setAttribute('dd-dir', dir+'-'+d[direction]);
+  }
+  function mouseEnter(e) {
+    mouseEvent(e, 'in');
+  }
+  function mouseLeave(e) {
+    mouseEvent(e, 'out');
+  }
+  </script>
+</body>
+</html>
